@@ -35,7 +35,9 @@ jobs:
       - name: Bauen
         run: npx next build
         env:
-          LIVE: '1'
+          # Die Formular-Routen legen den Resend-Zugang schon beim Laden an und brechen ohne Wert ab.
+          # Beim Bauen reicht ein Platzhalter, zur Laufzeit gilt der echte Wert aus .env auf dem Server.
+          RESEND_API_KEY: re_platzhalter_nur_fuer_den_bau
 
       - name: SSH-Zugang
         env:
